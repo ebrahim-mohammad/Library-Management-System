@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\ReviewResource;
+use App\Http\Traits\ApiResponseTrait;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class ReviewController extends Controller
 {
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      */

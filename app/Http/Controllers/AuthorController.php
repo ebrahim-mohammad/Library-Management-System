@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthorRequest;
 use App\Http\Resources\AuthorResource;
+use App\Http\Traits\ApiResponseTrait;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class AuthorController extends Controller
 {
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      */
@@ -79,5 +81,13 @@ class AuthorController extends Controller
             $author->delete();
             return $this->customeRespone(null, 'Author deleted successfully', 200);
 
+    }
+
+    private function customResponse($data, $message, $status)
+    {
+        return response()->json([
+            'data' => $data,
+            'message' => $message,
+        ], $status);
     }
 }
